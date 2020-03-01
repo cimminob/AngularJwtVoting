@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { AuthService } from '../auth/auth.service';
 import { SignUpInfo } from '../auth/signup-info';
 
@@ -8,6 +7,7 @@ import { SignUpInfo } from '../auth/signup-info';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent implements OnInit {
   form: any = {};
   signupInfo: SignUpInfo;

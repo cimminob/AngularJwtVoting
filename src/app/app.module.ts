@@ -14,6 +14,8 @@ import { PmComponent } from './pm/pm.component';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
 import { CandidateComponent } from './candidate/candidate.component';
+import { CreateElectionComponent } from './election/create-election/create-election.component';
+import { ViewElectionsComponent } from './election/view-elections/view-elections.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { CandidateComponent } from './candidate/candidate.component';
     HomeComponent,
     AdminComponent,
     PmComponent,
-    CandidateComponent
+    CandidateComponent,
+    CreateElectionComponent,
+    ViewElectionsComponent
   ],
   imports: [
     BrowserModule,
