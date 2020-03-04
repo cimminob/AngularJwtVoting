@@ -1,3 +1,11 @@
-<p>
-  view-elections works!
-</p>
+<h1>View Elections</h1>
+
+<ul>
+  <li  *ngFor="let election of elections">
+    ID: {{election.id}}<br>
+    Date: {{election.date}}<br>
+    Type: {{election.type}}<br>
+    City: {{election.city}}<br>
+    State: {{election.state}}<br>
+  </li><br>
+</ul>

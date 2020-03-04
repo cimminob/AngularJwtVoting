@@ -1,0 +1,15 @@
+<!-- <div *ngIf="isVoteSuccessful; else voteForm">
+  Candidate has been added!
+</div> -->
+
+<div class="container">
+
+  <!-- 
+    <div *ngIf="addCandForm.submitted && isAddCandidateFailed" class="alert alert-warning">
+      Add Candidate Failed! <br /> {{errorMessage}}
+    </div> -->
+  <app-vote-child *ngFor="let election of eligibleElections"
+  [selectedElection]="election"
+  [userId]="userId"
+  ></app-vote-child>
+</div>

@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>{{selectedElection.type}} Election</h1>
+  <div *ngIf="isAddVoteSuccessful">
+    Vote Successfully added!
+  </div>
+
+  <ng-template #addVoteForm>
+
+    <form #electionVoteForm="ngForm" (ngSubmit)="onSubmit(electionVoteForm)">
+      <li *ngFor="let candidate of candList">
+        <input type="radio" [(ngModel)]="radioSelected" name="candidates" value="candidate.id" 
+          (change)="onItemChange(candidate)" required #candSelection="ngModel">
+      </li>
+
+      <h2>Your Selection: {{radioSelectedString}}</h2>
+
+      <button type="submit" class="btn btn-success" [disabled]="candSelection.errors">Submit</button>
+      <div *ngIf="electionVoteForm.submitted && isAddVoteFailed" class="alert alert-warning">
+        Add Candidate Failed! <br /> {{errorMessage}}
+      </div>
+    </form>
+
+
+
+  </ng-template>
+</div>

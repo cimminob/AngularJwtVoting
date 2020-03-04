@@ -1,5 +1,18 @@
 <h4>Content from Server</h4>
-<a href="/election/add" class="btn btn-success">Create Election</a>
+Hello World
+<a routerLink="/elections/add">Add Election</a>
+<a routerLink="/elections/view">View Elections</a>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+<a routerLink="/elections/view">View Elections</a>
+<button type="button" class="btn btn-secondary" >Add Election</button>
+    <button type="button" class="btn btn-secondary" routerLink="/elections/view">View Elections</button>
+    <button type="button" class="btn btn-secondary" routerLink="/candidates/add">Add Candidates</button>
+</div>
+
+<button class="btn btn-secondary" routerLink="/candidates/add">
+ Add Candidates</button>
 
 {{board}}
 {{errorMessage}}
+

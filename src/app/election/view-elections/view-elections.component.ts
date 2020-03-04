@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ElectionService } from 'src/app/services/election.service';
+import { Election } from 'src/app/models/election';
 
 @Component({
   selector: 'app-view-elections',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewElectionsComponent implements OnInit {
 
-  constructor() { }
+  elections:Election[];
 
-  ngOnInit() {
+  constructor(private electionService:ElectionService) { }
+
+  getElections():void {
+    this.electionService.getElections().subscribe(elections=>this.elections=elections);
+  }
+
+  ngOnInit(): void {
+    this.getElections();
   }
 
 }

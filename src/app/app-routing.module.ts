@@ -5,9 +5,11 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
-import { PmComponent } from './pm/pm.component';
 import { AdminComponent } from './admin/admin.component';
-import { CandidateComponent } from './candidate/candidate.component';
+
+import { ViewElectionsComponent } from './election/view-elections/view-elections.component';
+import { CreateElectionComponent } from './election/create-election/create-election.component';
+import { AddCandidateComponent } from './candidate/add-candidate/add-candidate.component';
 
 const routes: Routes = [
     {
@@ -19,8 +21,16 @@ const routes: Routes = [
         component: UserComponent
     },
     {
-        path: 'candidate',
-        component: CandidateComponent
+        path: 'elections/view',
+        component: ViewElectionsComponent
+    },
+    {
+        path: 'elections/add',
+        component: CreateElectionComponent
+    },
+    {
+        path: 'candidates/add',
+        component: AddCandidateComponent
     },
     {
         path: 'admin',

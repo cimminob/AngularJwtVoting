@@ -1,6 +1,7 @@
 import {Component, OnInit } from '@angular/core';
 import {ElectionService} from '../../services/election.service';
 import {ElectionInfo} from '../../models/election-info';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-create-election',
@@ -9,36 +10,32 @@ import {ElectionInfo} from '../../models/election-info';
 })
 export class CreateElectionComponent implements OnInit {
 
-  form: any = {};
   electionInfo: ElectionInfo;
   errorMessage = '';
   isCreateElectionFailed = false;
-  isCreateElectionSuccessful=true;
+  isCreateElectionSuccessful=false;
 
   ngOnInit(): void {}
 
-  onSubmit(){
-    console.log(this.form);
+  onSubmit(form: NgModel){
+    console.log(form.value.date);
 
     this.electionInfo = new ElectionInfo(
-      this.form.date,
-      this.form.type,
-      this.form.city,
-      this.form.state,
+      form.value.date,
+      form.value.type,
+      form.value.city,
+      form.value.state,
     );
 
-    this.electionService.addElection(this.electionInfo).subscribe(
+  let res =    this.electionService.addElection(this.electionInfo);
+  
+   res.subscribe(
       data => {
       console.log(data);
       this.isCreateElectionFailed=false;
       this.isCreateElectionSuccessful = true;
-    },
-      error => {
-        console.log(error);
-        this.errorMessage = error.error.message;
-        this.isCreateElectionFailed = true;
-        this.isCreateElectionSuccessful = false;
-      } 
+    }
+      
     );
   };
   

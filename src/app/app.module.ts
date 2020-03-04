@@ -13,9 +13,15 @@ import { AdminComponent } from './admin/admin.component';
 import { PmComponent } from './pm/pm.component';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
-import { CandidateComponent } from './candidate/candidate.component';
+
 import { CreateElectionComponent } from './election/create-election/create-election.component';
 import { ViewElectionsComponent } from './election/view-elections/view-elections.component';
+import { MessageComponent } from './message/message.component';
+import { AddCandidateComponent } from './candidate/add-candidate/add-candidate.component';
+import { ViewCandidatesComponent } from './candidate/view-candidates/view-candidates.component';
+import { VoteComponent } from './election/vote/vote.component';
+import { VoteSelectedElectionComponent } from './election/vote-selected-election/vote-selected-election.component';
+import { VoteChildComponent } from './election/vote-child/vote-child.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +32,15 @@ import { ViewElectionsComponent } from './election/view-elections/view-elections
     HomeComponent,
     AdminComponent,
     PmComponent,
-    CandidateComponent,
+
     CreateElectionComponent,
-    ViewElectionsComponent
+    ViewElectionsComponent,
+    MessageComponent,
+    AddCandidateComponent,
+    ViewCandidatesComponent,
+    VoteComponent,
+    VoteSelectedElectionComponent,
+    VoteChildComponent
   ],
   imports: [
     BrowserModule,
