@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserInfo } from 'src/app/models/user-info';
 import { ElectionService } from 'src/app/services/election.service';
 import { Election } from 'src/app/models/election';
+import { VoteInfo } from 'src/app/models/vote-info';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-vote-child',
@@ -18,6 +20,7 @@ export class VoteChildComponent implements OnInit {
   radioSel:UserInfo;
   radioSelected:UserInfo;
   radioSelectedString:string;
+  voteInfo : VoteInfo;
 
   @Input() selectedElection: Election;
   @Input() userId:number;
@@ -39,22 +42,21 @@ export class VoteChildComponent implements OnInit {
     this.getSelectedCandidate();
   }
 
+   onSubmit(form :NgModel){
 
-  
-  // onSubmit(){
-  //   this.electionService.addCandidate(this.electionId, this.userId).subscribe(
-  //     data=>{
-  //       console.log(data); 
-  //       this.isAddCandidateFailed=false;
-  //       this.isAddCandidateSuccessful=true;
-      
-  //     }
-  //   )
+     this.voteInfo=new VoteInfo(
+       form.value,
+       this.electionId,
+       this.userId
+     );
 
-  // }
-
-
-   onSubmit(){
+     this.electionService.addVote(this.electionId, this.voteInfo).subscribe(
+       data =>{
+         console.log(data),
+         this.isAddVoteFailed=false,
+         this.isAddVoteSuccessful=true;
+       }
+     );
      
    }
 

@@ -7,6 +7,7 @@ import { MessageService } from './message.service';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Token } from '@angular/compiler';
 import { UserInfo } from '../models/user-info';
+import { VoteInfo } from '../models/vote-info';
 
 
 @Injectable({
@@ -31,6 +32,10 @@ export class ElectionService {
     
   //   };
 
+    addVote(electionId:number, info:VoteInfo){
+      const addVoteUrl=`/election/${electionId}/vote`;
+      return this.http.post(addVoteUrl, info);
+    }
 
     addElection(info: ElectionInfo){
       return this.http.post(this.addElectionUrl, info);

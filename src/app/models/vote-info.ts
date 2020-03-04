@@ -1,11 +1,9 @@
-class VoteInfo {
-    Id: number;
+export class VoteInfo {
     candId:number;
     electionId:number;
     voterId:number;
 
-    constructor(Id:number, candId:number, electionId:number, voterId:number){
-        this.Id=Id;
+    constructor(candId:number, electionId:number, voterId:number){
         this.candId=candId;
         this.electionId=electionId;
         this.voterId=voterId;
