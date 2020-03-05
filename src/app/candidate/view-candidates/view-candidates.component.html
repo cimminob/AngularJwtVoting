@@ -1,3 +1,20 @@
-<p>
-  view-candidates works!
-</p>
+<div class="container">
+    <h3 class="text-primary">View Candidates: </h3>
+
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <label for="electionId">Enter election id to view candidates </label>
+        <br>
+        <input type="text" name="electionId" ngModel required><br><br>
+        <button class="btn btn-success" type="submit">View</button>
+    </form>
+
+    <div *ngIf="candidates">
+        The Candidates in Election {{electionId}} are:
+    </div>
+
+    <div *ngFor="let cand of candidates">
+        <span class="text-danger"> ID: </span>{{cand.id}}<br>
+        <span class="text-danger"> Name: </span>{{cand.name}}<br>
+    </div>
+
+</div>

@@ -8,6 +8,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Token } from '@angular/compiler';
 import { UserInfo } from '../models/user-info';
 import { VoteInfo } from '../models/vote-info';
+import { Results } from '../models/results';
 
 
 @Injectable({
@@ -17,8 +18,6 @@ export class ElectionService {
 
   private addElectionUrl = 'http://localhost:8080/election';
   private getElectionsUrl = 'http://localhost:8080/elections';
-
- 
 
   constructor(private http: HttpClient,  private messageService: MessageService) {
   }
@@ -33,28 +32,39 @@ export class ElectionService {
   //   };
 
     addVote(electionId:number, info:VoteInfo){
-      const addVoteUrl=`/election/${electionId}/vote`;
+      const addVoteUrl='http://localhost:8080/election/'+electionId+'/vote';
       return this.http.post(addVoteUrl, info);
     }
 
-    addElection(info: ElectionInfo){
+    addElection(info: ElectionInfo){  
       return this.http.post(this.addElectionUrl, info);
     }
 
     addCandidate(electionId: number, userId: number){
-       const addCandidateUrl  = `http://localhost:8000/${electionId}/${userId}`;
-      return this.http.post(addCandidateUrl, null);
+       const userInfo = new UserInfo(null, null, null, null, null);
+       const addCandidateUrl  = 'http://localhost:8080/election/'+electionId+'/'+userId;
+       console.log(addCandidateUrl);  
+       return this.http.post(addCandidateUrl, null);
     }
 
-    getCandidates(electionId: number):Observable<UserInfo[]>{
-      const getCandidatesUrl=`http://localhost:8080/election/${electionId}/candidates`;
+    getCandidatesInElection(electionId: number):Observable<UserInfo[]>{
+      console.log("election id is "+electionId);
+      const getCandidatesUrl = `http://localhost:8080/election/${electionId}/candidates`;
+      console.log(getCandidatesUrl);
       return this.http.get<UserInfo[]>(getCandidatesUrl);
+      //  return this.http.get<UserInfo[]>('http://localhost:8080/election/1/candidates');
     }
-
 
     getEligibleElections(userId: number):Observable<Election[]>{
-      const getEligibleElectionsUrl=`/election/elections_user_can_vote_in/${userId}`;
-      return this.http.get<Election[]>(getEligibleElectionsUrl);
+      const getEligibleElectionsUrl='http://localhost:8080/election/elections_user_can_vote_in/'+userId;
+      let res = this.http.get<Election[]>(getEligibleElectionsUrl);
+      res.subscribe(data=>console.log(data));
+      return res;
+    }
+
+    getElectionResults(electionId:number):Observable<Results[]>{
+      const getElectionResultsUrl='http://localhost:8080/election/'+electionId+'/results';
+      return this.http.get<Results[]>(getElectionResultsUrl);
     }
 
     getElections():Observable<Election[]>{

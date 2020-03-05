@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserInfo } from 'src/app/models/user-info';
+import { ElectionService } from 'src/app/services/election.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-view-candidates',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewCandidatesComponent implements OnInit {
 
-  constructor() { }
+  candidates:UserInfo[];  
+  electionId:number;
+
+  constructor(private electionService:ElectionService) { }
+
+
+  onSubmit(form:NgForm){ 
+    console.log(form.value.electionId);
+      this.electionService.getCandidatesInElection(form.value.electionId).subscribe(candidates=>this.candidates=candidates);
+  }
 
   ngOnInit() {
+
   }
 
 }

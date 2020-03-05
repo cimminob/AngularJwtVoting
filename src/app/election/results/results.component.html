@@ -1,0 +1,7 @@
+<h2> the results of the election are :</h2>
+<br>
+<ul>
+  <li *ngFor="let election of elections">
+      <app-results-child [election]="election"></app-results-child>
+  </li>
+</ul>

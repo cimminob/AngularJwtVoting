@@ -1,11 +1,12 @@
-<h1>View Elections</h1>
+<h3 class="text-primary">Elections:</h3>
 
 <ul>
   <li  *ngFor="let election of elections">
-    ID: {{election.id}}<br>
-    Date: {{election.date}}<br>
-    Type: {{election.type}}<br>
-    City: {{election.city}}<br>
-    State: {{election.state}}<br>
+   <span class="text-danger"> ID: </span>{{election.id}}<br>
+   <span class="text-danger">  Date: </span>{{election.date}}<br>
+   <span class="text-danger">  Type: </span>{{election.type}}<br>
+   <span class="text-danger"> City: </span>{{election.city}}<br>
+   <span class="text-danger">  State: </span> {{election.state}}<br><br>
   </li><br>
 </ul>
+<br>

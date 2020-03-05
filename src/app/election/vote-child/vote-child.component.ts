@@ -29,10 +29,9 @@ export class VoteChildComponent implements OnInit {
   constructor(private electionService:ElectionService) { }
 
   getCandidates():void{
-    this.electionService.getCandidates(this.electionId).subscribe(candList=>this.candList=candList);
+    this.electionService.getCandidatesInElection(this.electionId).subscribe(candList=>this.candList=candList);
    }
 
-   
    getSelectedCandidate(){
     this.radioSel = this.candList.find(cand => cand == this.radioSelected);
     this.radioSelectedString = JSON.stringify(this.radioSel);

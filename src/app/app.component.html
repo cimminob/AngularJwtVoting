@@ -1,11 +1,11 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default">
+
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Cogent E Vote</a>
+      <a class="navbar-brand " href="#">Cogent E Vote</a>
     </div>
-    <ul class="nav navbar-nav" routerLinkActive="active">
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item"><a class="nav-link" routerLink="home">Home</a></li>
-      <li *ngIf="authority === 'user'" class="nav-item">
+      <li *ngIf="authority === 'user' ||  authority === 'admin'" class="nav-item">
         <a class="nav-link" routerLink="user">User Board</a>
       </li>
       <li *ngIf="authority === 'admin'" class="nav-item">
@@ -18,8 +18,9 @@
         <a class="nav-link" routerLink="auth/login">Login</a>
       </li>
     </ul>
-  </div>
+
 </nav>
+<br><br>
 <div class="container">
   <router-outlet></router-outlet>
 </div>

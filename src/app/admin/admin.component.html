@@ -1,18 +1,16 @@
-<h4>Content from Server</h4>
-Hello World
-<a routerLink="/elections/add">Add Election</a>
-<a routerLink="/elections/view">View Elections</a>
+    <!-- 
+    <a routerLink="/elections/add">Add Election</a>
+    <a routerLink="/elections/view">View Elections</a> -->
 
-<div class="btn-group" role="group" aria-label="Basic example">
-<a routerLink="/elections/view">View Elections</a>
-<button type="button" class="btn btn-secondary" >Add Election</button>
+    <h3 class="text-primary">Admin Control Panel</h3>
+<div class="btn-group p-3" role="group" aria-label="Basic example">
+
+    <button type="button" class="btn btn-secondary" routerLink="/elections/add" >Add Election</button>
     <button type="button" class="btn btn-secondary" routerLink="/elections/view">View Elections</button>
     <button type="button" class="btn btn-secondary" routerLink="/candidates/add">Add Candidates</button>
+    <button type="button" class="btn btn-secondary" routerLink="/candidates/view">View Candidates</button>
+    <button type="button" class="btn btn-secondary" routerLink="/results">Results</button>
 </div>
 
-<button class="btn btn-secondary" routerLink="/candidates/add">
- Add Candidates</button>
-
-{{board}}
 {{errorMessage}}
 

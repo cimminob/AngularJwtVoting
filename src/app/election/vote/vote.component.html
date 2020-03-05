@@ -1,15 +1,24 @@
 <!-- <div *ngIf="isVoteSuccessful; else voteForm">
   Candidate has been added!
 </div> -->
+<h3 class="text-primary">Elections you are eligible to vote in:</h3>
+<br>
 
-<div class="container">
+<div *ngFor="let election of eligibleElections">
+  <br>
+  Election Type: {{election.type}} <br>
+  City: {{election.city}}  <br>
+  Candidates: {{election.candIds}}<br>
+  <br>
+</div>
 
-  <!-- 
-    <div *ngIf="addCandForm.submitted && isAddCandidateFailed" class="alert alert-warning">
-      Add Candidate Failed! <br /> {{errorMessage}}
-    </div> -->
-  <app-vote-child *ngFor="let election of eligibleElections"
-  [selectedElection]="election"
-  [userId]="userId"
-  ></app-vote-child>
+
+<div *ngIf="eligibleElections!==null" class="container">
+  <app-vote-child 
+    *ngFor="let election of eligibleElections"
+    [selectedElection]="election"
+    [userId]="userId"
+  >
+
+</app-vote-child>
 </div>

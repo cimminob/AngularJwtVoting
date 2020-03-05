@@ -10,6 +10,9 @@ import { AdminComponent } from './admin/admin.component';
 import { ViewElectionsComponent } from './election/view-elections/view-elections.component';
 import { CreateElectionComponent } from './election/create-election/create-election.component';
 import { AddCandidateComponent } from './candidate/add-candidate/add-candidate.component';
+import { VoteComponent } from './election/vote/vote.component';
+import { ResultsComponent } from './election/results/results.component';
+import { ViewCandidatesComponent } from './candidate/view-candidates/view-candidates.component';
 
 const routes: Routes = [
     {
@@ -33,6 +36,14 @@ const routes: Routes = [
         component: AddCandidateComponent
     },
     {
+        path: 'vote',
+        component: VoteComponent
+    },
+    {
+        path: 'results',
+        component: ResultsComponent
+    },
+    {
         path: 'admin',
         component: AdminComponent
     },
@@ -43,6 +54,10 @@ const routes: Routes = [
     {
         path: 'signup',
         component: RegisterComponent
+    },
+    {
+        path: 'candidates/view',
+        component: ViewCandidatesComponent
     },
     {
         path: '',

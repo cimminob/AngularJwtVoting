@@ -1,27 +1,27 @@
-<div *ngIf="isAddCandidateSuccessful; else addCandForm">
+<div *ngIf="isAddCandidateSuccessful; else addCandidateForm">
     Candidate has been added!
 </div>
 
+
 <ng-template #addCandidateForm>
     <div class="container">
+        <h3 class="text-primary">Add Candidates To election: </h3>
 
-        <h1>Add Candidates To election</h1>
-
-        <form #addCandForm="ngForm" (ngSubmit)="onSubmit(addCandForm)">
+        <form #addCandForm="ngForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
             <div class="form-group">
                 <label for="electionId">Election ID:</label>
-                <input type="text" class="form-control" id="electionId" [(ngModel)]="electionId" required
-                    name="electionId" #electionIdProperty=ngModel>
-                <div [hidden]="electionIdProperty.valid || electionIdProperty.pristine" class="alert alert-danger">
+                <input type="text" class="form-control" id="electionId" ngModel  required
+                    name="electionId" #electionId=ngModel>
+                <div [hidden]="electionId.valid || electionId.pristine" class="alert alert-danger">
                     Name is required
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="userId">User ID:</label>
-                <input type="text" class="form-control" id="userId" [(ngModel)]="userId" required name="userId"
-                    #userIdProperty=ngModel>
-                <div [hidden]="userIdProperty.valid || userIdProperty.pristine" class="alert alert-danger">
+                <input type="text" class="form-control" id="userId" ngModel required name="userId"
+                    #userId=ngModel>
+                <div [hidden]="userId.valid || userId.pristine" class="alert alert-danger">
                     User is required
                 </div>
             </div>
@@ -32,10 +32,18 @@
                 Add Candidate Failed! <br /> {{errorMessage}}
             </div>
 
-            <button type="submit" ng-click="show=true" class="btn btn-success">View Elections</button>
         </form>
     </div>
 
 </ng-template>
 
-<app-view-candidates *ngIf=show></app-view-candidates>
+<br>
+
+<button (click)="toggleDisplay()" class="btn btn-success">View Elections</button>
+<!-- 
+<app-view-candidates *ngIf="!isShow"></app-view-candidates> -->
+<br>
+<app-view-elections  *ngIf="!isShow"></app-view-elections>
+<br>
+<app-view-candidates></app-view-candidates>
+
